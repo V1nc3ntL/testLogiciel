@@ -30,5 +30,13 @@ class TestFuncs(unittest.TestCase):
 		self.assertEqual(funcs.ecartType([5,10,6,8,3,4]), 2.3804761428476167)
 		self.assertEqual(funcs.ecartType([]), 0)
 
+	def test_isGeometric(self):
+		self.assertEqual(funcs.isGeometric([24,12,6,3]), True)
+		self.assertEqual(funcs.isGeometric([1,2,4,8,16,32]), True)
+		self.assertEqual(funcs.isGeometric([1,3,9,12,15]), False)
+		self.assertEqual(funcs.isGeometric([1,16,9,14,3]), False)
+		self.assertEqual(funcs.isGeometric([1,2,4,8,16,32,2]), False)	
+		self.assertEqual(funcs.isGeometric([]), False)
+		self.assertEqual(funcs.isGeometric([10]), False)
 if __name__ == '__main__':
 	unittest.main()

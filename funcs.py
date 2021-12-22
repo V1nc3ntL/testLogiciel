@@ -37,6 +37,7 @@ def medianne(liste):
 
 def ecartType(liste):
 	
+
 	if liste == []:
 		return 0
 		
@@ -50,3 +51,6 @@ def ecartType(liste):
 	return (S/size)**(1/2)
 
 
+def isGeometric(liste):
+
+	return -1
