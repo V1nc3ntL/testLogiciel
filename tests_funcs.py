@@ -10,5 +10,12 @@ class TestFuncs(unittest.TestCase):
 		self.assertEqual(funcs.minimum_int([10, 15, 5, -20, 16]), -20)
 		self.assertEqual(funcs.minimum_int([]), 0)
 
+	def test_moyenne(self):
+		self.assertEqual(funcs.moyenne([10, 15, 5, 20, 35]), 17)
+		self.assertEqual(funcs.moyenne([10, 15, 5, 20, 16]), 13.2)
+		self.assertEqual(funcs.moyenne([10, 15, 5, 20, 2]), 10.4)
+		self.assertEqual(funcs.moyenne([10, 15, 5, -20, 16]), 5.2)
+		self.assertEqual(funcs.moyenne([]), 0)
+
 if __name__ == '__main__':
 	unittest.main()

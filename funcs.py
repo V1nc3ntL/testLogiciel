@@ -8,3 +8,7 @@ def minimum_int(liste):
 		if m > i:
 			m = i;
 	return m
+
+def moyenne(liste):
+
+	return -1
