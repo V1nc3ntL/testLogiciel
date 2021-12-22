@@ -23,5 +23,12 @@ class TestFuncs(unittest.TestCase):
 		self.assertEqual(funcs.medianne([5]), 5)
 		self.assertEqual(funcs.medianne([1,4,3,2]), 2.5)
 		self.assertEqual(funcs.medianne([]), 0)
+
+	def test_ecartType(self):
+		self.assertEqual(funcs.ecartType([1,2,3,4,5]), 1.4142135623730951)
+		self.assertEqual(funcs.ecartType([10,0,80,45,20, 60]), 28.345585586158247)
+		self.assertEqual(funcs.ecartType([5,10,6,8,3,4]), 2.3804761428476167)
+		self.assertEqual(funcs.ecartType([]), 0)
+
 if __name__ == '__main__':
 	unittest.main()

@@ -34,3 +34,9 @@ def medianne(liste):
 	else:
 
 		return l[int((size-1)/2)]
+
+def ecartType(liste):
+	
+	return -1
+
+
