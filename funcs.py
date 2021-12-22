@@ -1,2 +1,2 @@
-def minimum_int(liste[]):
+def minimum_int(liste):
 	return -1
