@@ -23,4 +23,14 @@ def moyenne(liste):
 
 def medianne(liste):
 
-	return -1
+	l = sorted(liste)
+	size = len(liste)
+
+	if size < 1:
+		return 0
+
+	if size%2 == 0:
+		return (l[ int((size - 1)/2)] + l[ int((size)/2)])/2.0 # moyenne entre les 2 valeurs mediannes
+	else:
+
+		return l[int((size-1)/2)]

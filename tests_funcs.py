@@ -19,7 +19,7 @@ class TestFuncs(unittest.TestCase):
 
 
 	def test_medianne(self):
-		self.assertEqual(funcs.medianne([3, 1, 2]), 1)
+		self.assertEqual(funcs.medianne([3, 1, 2]), 2)
 		self.assertEqual(funcs.medianne([5]), 5)
 		self.assertEqual(funcs.medianne([1,4,3,2]), 2.5)
 		self.assertEqual(funcs.medianne([]), 0)
