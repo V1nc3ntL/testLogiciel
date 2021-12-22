@@ -99,4 +99,19 @@ def nextGeo(liste, n):
 
 def nextArith(liste, n):
 
-	return -1
+	if isArithmetic(liste) == False or n < 0 or len(liste) < 2:
+		return False
+		
+	raison = liste[1] - liste[0]
+	S = liste[len(liste)-1]
+	res = []
+	i = 0
+
+	for i in range(0, n):
+		S += raison
+		if S < 0:
+			return (True, res)
+		else:
+			res.append(int(S))
+
+	return (True, res) 
