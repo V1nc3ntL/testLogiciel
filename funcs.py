@@ -80,3 +80,7 @@ def isArithmetic(liste):
 		tmp = liste[i+1] - liste[i]
 		if raison != tmp:
 			return False
+
+def nextGeo(liste, n):
+
+	return -1

@@ -47,5 +47,17 @@ class TestFuncs(unittest.TestCase):
 		self.assertEqual(funcs.isArithmetic([1,2,4,8,16,32]), False)
 		self.assertEqual(funcs.isArithmetic([1]), False)
 		self.assertEqual(funcs.isArithmetic([]), False)
+
+
+	def test_nextGeo(self):
+		self.assertEqual(funcs.nextGeo([24,12,6], 2), (True,[3,1]))
+		self.assertEqual(funcs.nextGeo([1,2,4], 6), (True, [8, 16, 32, 64, 128, 256]))
+		self.assertEqual(funcs.nextGeo([1,2,4], 0), (True,[]))
+		self.assertEqual(funcs.nextGeo([1,3,9,12,15], 5), False)
+		self.assertEqual(funcs.nextGeo([1,16,9,14,3], 3), False)
+		self.assertEqual(funcs.nextGeo([1,2,4,8,16,32,2], 1), False)	
+		self.assertEqual(funcs.nextGeo([], 4), False)
+		self.assertEqual(funcs.nextGeo([10], 1), False)
+		self.assertEqual(funcs.nextGeo([1,2,4], -6), False)
 if __name__ == '__main__':
 	unittest.main()
