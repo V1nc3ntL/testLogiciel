@@ -1,5 +1,13 @@
-def max_int(a,b):
-	if a < b :
-		return b
-	else :
-		return a
+#!/usr/bin/python3
+import sqlite3
+
+DB_NAME = "ex2TDD.db"
+
+def connect() :
+    conn = sqlite3.connect()
+    try :
+        conn.cursor()
+        return True
+    except Exception :
+        return False
+    
