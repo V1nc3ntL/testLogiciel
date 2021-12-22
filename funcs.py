@@ -1,2 +1,7 @@
 def minimum_int(liste):
-	return -1
+	m = liste[0]
+
+	for i in liste:
+		if m > i:
+			m = i;
+	return m
