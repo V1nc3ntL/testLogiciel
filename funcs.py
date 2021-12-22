@@ -83,4 +83,15 @@ def isArithmetic(liste):
 
 def nextGeo(liste, n):
 
-	return -1
+	if isGeometric(liste) == False or n < 0 or len(liste) < 2:
+		return False
+	raison = liste[1] / liste[0]
+	S = liste[len(liste)-1]
+	res = []
+	i = 0
+
+	for i in range(0, n):
+		S *= raison
+		res.append(int(S))
+
+	return (True, res) 
