@@ -65,3 +65,7 @@ def isGeometric(liste):
 		tmp = liste[i+1] / liste[i]
 		if raison != tmp:
 			return False
+
+def isArithmetic(liste):
+
+	return -1
