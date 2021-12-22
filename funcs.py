@@ -20,3 +20,7 @@ def moyenne(liste):
 	for i in range(0, length):
 		somme = somme + liste[i]
 	return somme/length
+
+def medianne(liste):
+
+	return -1
