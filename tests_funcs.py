@@ -66,9 +66,9 @@ class TestFuncs(unittest.TestCase):
 		self.assertEqual(funcs.nextArith([0,2,4,6,8,10], 0), (True, []))
 		self.assertEqual(funcs.nextArith([0,2,4,6,8,10], -3), False)
 		self.assertEqual(funcs.nextArith([1,2,4,6,8,10], 3), False)
-		self.assertEqual(funcs.nextArith([0,2,4,6,8,11]), False)
-		self.assertEqual(funcs.nextArith([1,2,4,8,16,32]), False)
-		self.assertEqual(funcs.nextArith([1]), False)
-		self.assertEqual(funcs.nextArith([]), False)
+		self.assertEqual(funcs.nextArith([0,2,4,6,8,11], 3), False)
+		self.assertEqual(funcs.nextArith([1,2,4,8,16,32], 3), False)
+		self.assertEqual(funcs.nextArith([1], 5), False)
+		self.assertEqual(funcs.nextArith([], 5), False)
 if __name__ == '__main__':
 	unittest.main()
