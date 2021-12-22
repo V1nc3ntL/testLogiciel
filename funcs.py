@@ -10,5 +10,13 @@ def minimum_int(liste):
 	return m
 
 def moyenne(liste):
+	
+	if liste == []:
+		return 0
 
-	return -1
+	somme = 0;
+	length = len(liste)
+	
+	for i in range(0, length):
+		somme = somme + liste[i]
+	return somme/length
