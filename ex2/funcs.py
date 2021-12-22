@@ -4,7 +4,7 @@ import sqlite3
 DB_NAME = "ex2TDD.db"
 
 def connect() :
-    conn = sqlite3.connect()
+    conn = sqlite3.connect(DB_NAME)
     try :
         conn.cursor()
         return True
