@@ -95,3 +95,8 @@ def nextGeo(liste, n):
 		res.append(int(S))
 
 	return (True, res) 
+
+
+def nextArith(liste, n):
+
+	return -1

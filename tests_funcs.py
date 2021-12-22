@@ -59,5 +59,16 @@ class TestFuncs(unittest.TestCase):
 		self.assertEqual(funcs.nextGeo([], 4), False)
 		self.assertEqual(funcs.nextGeo([10], 1), False)
 		self.assertEqual(funcs.nextGeo([1,2,4], -6), False)
+
+	def test_nextArith(self):
+		self.assertEqual(funcs.nextArith([60,50,40], 4), (True, [30, 20, 10, 0]))
+		self.assertEqual(funcs.nextArith([0,2,4,6,8,10], 3), (True, [12,14,16]))
+		self.assertEqual(funcs.nextArith([0,2,4,6,8,10], 0), (True, []))
+		self.assertEqual(funcs.nextArith([0,2,4,6,8,10], -3), False)
+		self.assertEqual(funcs.nextArith([1,2,4,6,8,10], 3), False)
+		self.assertEqual(funcs.nextArith([0,2,4,6,8,11]), False)
+		self.assertEqual(funcs.nextArith([1,2,4,8,16,32]), False)
+		self.assertEqual(funcs.nextArith([1]), False)
+		self.assertEqual(funcs.nextArith([]), False)
 if __name__ == '__main__':
 	unittest.main()
