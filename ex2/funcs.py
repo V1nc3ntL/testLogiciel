@@ -3,7 +3,7 @@ import sqlite3
 import exdef
 
 def connect() :
-    conn = sqlite3.connect()
+    conn = sqlite3.connect(exdef.DB_NAME)
     try :
          conn.cursor()
          return (True,conn)
