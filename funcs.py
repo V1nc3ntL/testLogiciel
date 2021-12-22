@@ -37,6 +37,16 @@ def medianne(liste):
 
 def ecartType(liste):
 	
-	return -1
+	if liste == []:
+		return 0
+		
+	size = len(liste)
+	S = 0
+	m = moyenne(liste)
+
+	for i in range(0, size):
+		S = S + (m-liste[i])**2
+	
+	return (S/size)**(1/2)
 
 
