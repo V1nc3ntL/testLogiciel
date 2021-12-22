@@ -21,8 +21,6 @@ class TestFuncs(unittest.TestCase):
 
 if __name__ == '__main__':
 
-    # # Ensure that the tests are done in a clean space
-    # conn = sqlite3.connect(exdef.DB_NAME)
-    # conn.cursor().execute("DROP TABLE "+exdef.TABLE_NAME)
+
 
     unittest.main()
