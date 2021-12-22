@@ -20,7 +20,12 @@ def create_table(table_name) :
     return cur.fetchall()[0][0]
 
 def add_column(column_name,type_str="STRING") :
-
-    return "" 
+    query = "ALTER TABLE "+exdef.TABLE_NAME + " ADD COLUMN " + column_name + " " + type_str
+    cur.execute(query)
+    cols = cur.execute("SELECT name FROM PRAGMA_TABLE_INFO('"+exdef.TABLE_NAME+"')" ).fetchall()
+    if (column_name,) in cols :
+        return column_name 
+    else :
+        return "" 
 
     
