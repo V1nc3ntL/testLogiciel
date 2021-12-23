@@ -72,6 +72,7 @@ class TestFuncs(unittest.TestCase):
 if __name__ == '__main__':
     
     funcs.connect(False)
+    funcs.drop(TABLE_NAME)
     funcs.create_table(TABLE_NAME)
     for col in COLUMN_NAMES:
            funcs.add_column(col)
