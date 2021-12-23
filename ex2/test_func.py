@@ -71,10 +71,15 @@ class TestFuncs(unittest.TestCase):
         funcs.add_user(FAULT_PASSWORD_DIGIT[0],FAULT_PASSWORD_DIGIT[1])
         self.assertFalse(funcs.check_digit_password(TABLE_NAME))
 
-    def test_15_standard_password(self):
+    def test_16_standard_password(self):
         self.assertTrue(funcs.check_standard_password(TABLE_NAME))
         funcs.add_user(FAULT_PASSWORD_STANDARD[0],FAULT_PASSWORD_STANDARD[1])
         self.assertFalse(funcs.check_standard_password(TABLE_NAME))
+
+    def test_17_len_spubkey(self):
+        self.assertTrue(funcs.check_len_spubkey(TABLE_NAME))
+        funcs.add_user(FAULT_PASSWORD_STANDARD[0],FAULT_PASSWORD_STANDARD[1],spub="break")
+        self.assertFalse(funcs.check_len_spubkey(TABLE_NAME))
 
     def test_31_drop(self):
         self.assertTrue(funcs.drop(TABLE_NAME))
