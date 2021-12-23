@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import sqlite3
-from exdef import  DB_NAME, TABLE_NAME, COLUMN_NAMES
+from exdef import  DB_NAME, TABLE_NAME, COLUMN_NAMES,S_PUB_KEY,S_PRI_KEY,E_PUB_KEY,E_PRI_KEY
 
 cur = None
 
@@ -30,9 +30,15 @@ def add_column(column_name,type_str="STRING",tst=True) :
         else :
             return "" 
 
-def add_user(usr_name,password,tst=True) :
-    query = "INSERT INTO "+TABLE_NAME + "("+COLUMN_NAMES[0] + "," + COLUMN_NAMES[1] + ") values (?,?)" 
-    cur.execute(query,(usr_name,password))
+def add_user(usr_name,password,tst=True,spub=S_PUB_KEY,spri=S_PRI_KEY,epub=E_PUB_KEY,epri=E_PRI_KEY) :
+    query = "INSERT INTO "+TABLE_NAME + "(" +COLUMN_NAMES[0]
+    var_field = "(?"
+    for col in COLUMN_NAMES[1:] :
+        query +=   " , " + col 
+        var_field += ",?"
+
+    query += ") values " + var_field+")"
+    cur.execute(query,(usr_name,password,spub,spri,epub,epri))
     if(tst):
         query = "SELECT "+ COLUMN_NAMES[0] +", " +COLUMN_NAMES[1]+ "  FROM "+TABLE_NAME+" WHERE "+COLUMN_NAMES[0] + " = '" +usr_name +"'"
         fields = cur.execute(query).fetchall()
@@ -46,5 +52,17 @@ def login(usr_name,password) :
             return True
     return False
 
+
+def get_spubkey(usr_name,tst=True) :
+    return ""
+    
+def get_sprikey(key,tst=True) :
+    return ""
+    
+def get_epubkey(usr_name,tst=True) :
+    return ""
+    
+def get_eprikey(key,tst=True) :
+    return ""
     
     

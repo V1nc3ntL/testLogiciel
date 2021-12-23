@@ -2,7 +2,7 @@
 import funcs
 import unittest
 import sqlite3
-from  exdef import TABLE_NAME, COLUMN_NAMES, WORKING_USERS,FAULT_USERS
+from  exdef import TABLE_NAME, COLUMN_NAMES, WORKING_USERS,FAULT_USERS,S_PUB_KEY,S_PRI_KEY,E_PUB_KEY,E_PRI_KEY
 
 class TestFuncs(unittest.TestCase):
 
@@ -39,6 +39,29 @@ class TestFuncs(unittest.TestCase):
         for usr_fault in FAULT_USERS:
             for usr in usr_fault :
                 self.assertFalse(funcs.login(usr[0],usr[1]))
+                
+    def test_04_login(self):
+        for usr in WORKING_USERS:
+            self.assertTrue(funcs.login(usr[0],usr[1]))
+        for usr_fault in FAULT_USERS:
+            for usr in usr_fault :
+                self.assertFalse(funcs.login(usr[0],usr[1]))
+
+    def test_05_spubkeys(self):
+        for usr in WORKING_USERS:
+            self.assertEqual(funcs.get_spubkey(usr[0]),S_PUB_KEY)
+
+    def test_06_sprikeys(self):
+        for usr in WORKING_USERS:
+            self.assertEqual(funcs.get_sprikey(usr[0]),S_PRI_KEY)
+
+    def test_07_epubkeys(self):
+        for usr in WORKING_USERS:
+            self.assertEqual(funcs.get_epubkey(usr[0]),E_PRI_KEY)
+
+    def test_08_epubkeys(self):
+        for usr in WORKING_USERS:
+            self.assertEqual(funcs.get_epubkey(usr[0]),E_PUB_KEY)
 
 if __name__ == '__main__':
 

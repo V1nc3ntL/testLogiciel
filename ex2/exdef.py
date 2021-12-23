@@ -1,6 +1,16 @@
 DB_NAME = "ex2TDD.db"
 TABLE_NAME = "users"
 COLUMN_NAMES = ("username","password","spublickey","sprivatekey","epublickey","eprivatekey")
+KEY_SIZE = 128
+# Il n'y a a pas d'indication sur les clés, leur caractère ou leur format
+# Néanmoins des valeurs seront données pour pouvoir tester
+S_PUB_KEY = "0".ljust(KEY_SIZE)[:KEY_SIZE]
+S_PRI_KEY = "1".ljust(KEY_SIZE)[:KEY_SIZE]
+E_PUB_KEY = "2".ljust(KEY_SIZE)[:KEY_SIZE]
+E_PRI_KEY = "3".ljust(KEY_SIZE)[:KEY_SIZE]
+
+
+
 #le username devra être un nom unique 
 WORKING_USER_1 = ("Isma","B1?bbbbb")
 FAULT_USERNAME_UNIQUE = ("Isma","B1#bbbbb")
