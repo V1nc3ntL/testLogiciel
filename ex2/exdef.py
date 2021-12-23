@@ -9,8 +9,7 @@ S_PUB_KEY_COL_NAME = COLUMN_NAMES[2]
 S_PRI_KEY_COL_NAME = COLUMN_NAMES[3]
 E_PUB_KEY_COL_NAME = COLUMN_NAMES[4]
 E_PRI_KEY_COL_NAME = COLUMN_NAMES[5]
-# Il n'y a a pas d'indication sur les clés, leur caractère ou leur format
-# Néanmoins des valeurs seront données pour pouvoir tester
+
 S_PUB_KEY = "spub".rjust(KEY_SIZE)[:KEY_SIZE]
 S_PRI_KEY = "spri".rjust(KEY_SIZE)[:KEY_SIZE]
 E_PUB_KEY = "epub".rjust(KEY_SIZE)[:KEY_SIZE]

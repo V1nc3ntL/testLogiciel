@@ -1,20 +1,30 @@
 #!/usr/bin/python3
 import sqlite3
-from exdef import  DB_NAME, TABLE_NAME, COLUMN_NAMES,\
-S_PUB_KEY,S_PRI_KEY,E_PUB_KEY,E_PRI_KEY,KEY_NAMES,\
-USERNAME_COL_NAME, PASSWORD_COL_NAME,S_PUB_KEY_COL_NAME,\
-S_PRI_KEY_COL_NAME,E_PUB_KEY_COL_NAME,E_PRI_KEY_COL_NAME
+from exdef import  *
 
 cur = None
+conn = None
+def drop(table_name ,tst=True):
+    cur.execute("DROP TABLE IF EXISTS "+table_name)
+    if tst :
+        try :
+            cur.execute("SELECT * FROM " + table_name) 
+            if cur.fetchall():
+                return False
+        except Exception as ex:
+            return True 
 
+def disconnect() :
+    conn.close()
+        
 def connect(tst=True) :
-    global cur 
+    global cur,conn 
     conn = sqlite3.connect(DB_NAME)
     try :
         cur = conn.cursor()
-        return (True,conn)
+        return True
     except Exception as ex:
-        return (False,ex)
+        return False
 
 def create_table(table_name,tst=True) :
     # At least one row must be specified when creating a table
