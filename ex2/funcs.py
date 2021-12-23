@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 import sqlite3
-from exdef import  DB_NAME, TABLE_NAME, COLUMN_NAMES,S_PUB_KEY,S_PRI_KEY,E_PUB_KEY,E_PRI_KEY,KEY_NAMES
+from exdef import  DB_NAME, TABLE_NAME, COLUMN_NAMES,\
+S_PUB_KEY,S_PRI_KEY,E_PUB_KEY,E_PRI_KEY,KEY_NAMES,\
+USERNAME_COL_NAME, PASSWORD_COL_NAME,S_PUB_KEY_COL_NAME,\
+S_PRI_KEY_COL_NAME,E_PUB_KEY_COL_NAME,E_PRI_KEY_COL_NAME
 
 cur = None
 
@@ -44,12 +47,12 @@ def add_user(usr_name,password,tst=True,spub=S_PUB_KEY,spri=S_PRI_KEY,epub=E_PUB
     query += ") values " + var_field+")"
     cur.execute(query,(usr_name,password,spub,spri,epub,epri))
     if(tst):
-        query = "SELECT "+ COLUMN_NAMES[0] +", " +COLUMN_NAMES[1]+ "  FROM "+TABLE_NAME+" WHERE "+COLUMN_NAMES[0] + " = '" +usr_name +"'"
+        query = "SELECT "+ USERNAME_COL_NAME +", " + PASSWORD_COL_NAME + "  FROM "+TABLE_NAME+" WHERE "+USERNAME_COL_NAME + " = '" +usr_name +"'"
         fields = cur.execute(query).fetchall()
         return fields[0]
 
 def login(usr_name,password) :
-    query = "SELECT "+ COLUMN_NAMES[0] +", " +COLUMN_NAMES[1]+ "  FROM "+TABLE_NAME+" WHERE "+COLUMN_NAMES[0] + " = '" +usr_name +"'AND "+COLUMN_NAMES[1] + " = '" +password+"'" 
+    query = "SELECT "+ USERNAME_COL_NAME +", " + PASSWORD_COL_NAME + "  FROM "+TABLE_NAME+" WHERE "+USERNAME_COL_NAME + " = '" +usr_name +"'AND "+PASSWORD_COL_NAME+ " = '" +password+"'" 
     fields = cur.execute(query).fetchall()
     if fields :
         if(fields[0][0]==usr_name and fields[0][1]==password):
@@ -58,28 +61,28 @@ def login(usr_name,password) :
 
 
 def get_spubkey(usr_name,tst=True) :
-    query = "SELECT "+ COLUMN_NAMES[2] +"  FROM "+TABLE_NAME+" WHERE "+COLUMN_NAMES[0] + " = '" +usr_name +"'"
+    query = "SELECT "+ S_PUB_KEY_COL_NAME +"  FROM "+TABLE_NAME+" WHERE "+USERNAME_COL_NAME + " = '" +usr_name +"'"
     fields = cur.execute(query).fetchall()
     if fields :
         return fields[0][0]
     return ""
     
 def get_sprikey(usr_name,tst=True) :
-    query = "SELECT "+ COLUMN_NAMES[3] +"  FROM "+TABLE_NAME+" WHERE "+COLUMN_NAMES[0] + " = '" +usr_name +"'"
+    query = "SELECT "+ S_PRI_KEY_COL_NAME +"  FROM "+TABLE_NAME+" WHERE "+USERNAME_COL_NAME + " = '" +usr_name +"'"
     fields = cur.execute(query).fetchall()
     if fields :
         return fields[0][0]
     return ""
     
 def get_epubkey(usr_name,tst=True) :
-    query = "SELECT "+ COLUMN_NAMES[4] +"  FROM "+TABLE_NAME+" WHERE "+COLUMN_NAMES[0] + " = '" +usr_name +"'"
+    query = "SELECT "+ E_PUB_KEY_COL_NAME  +"  FROM "+TABLE_NAME+" WHERE "+USERNAME_COL_NAME + " = '" +usr_name +"'"
     fields = cur.execute(query).fetchall()
     if fields :
         return fields[0][0]
     return ""
     
 def get_eprikey(usr_name,tst=True) :
-    query = "SELECT "+ COLUMN_NAMES[5] +"  FROM "+TABLE_NAME+" WHERE "+COLUMN_NAMES[0] + " = '" +usr_name +"'"
+    query = "SELECT "+ E_PRI_KEY_COL_NAME+"  FROM "+TABLE_NAME+" WHERE "+USERNAME_COL_NAME + " = '" +usr_name +"'"
     fields = cur.execute(query).fetchall()
     if fields :
         return fields[0][0]
