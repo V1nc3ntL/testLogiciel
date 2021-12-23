@@ -30,4 +30,5 @@ def add_column(column_name,type_str="STRING",tst=True) :
         else :
             return "" 
 
-    
+def add_user(usr_name,password,tst=True) :
+    return ""

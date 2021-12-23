@@ -6,7 +6,8 @@ import exdef
 
 class TestFuncs(unittest.TestCase):
 
-
+    # Test are numbered as connection must be done first
+    # The first 3 tests check that a proper database connection is set
     def test_00_connection(self):
         connected = self.assertTrue(funcs.connect()[0])
         if not connected :
@@ -25,6 +26,10 @@ class TestFuncs(unittest.TestCase):
         for col in exdef.COLUMN_NAMES:
             self.assertEqual(funcs.add_column(col),col)
 
+    # Test for the user add function
+    def test_03_add_user(self):
+        for usr in exdef.WORKING_USERS:
+            self.assertEqual(funcs.add_user(usr[0],usr[1]),(usr[0],usr[1]))
 
 if __name__ == '__main__':
 
