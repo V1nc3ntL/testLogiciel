@@ -2,7 +2,7 @@
 import funcs
 import unittest
 import sqlite3
-from  exdef import TABLE_NAME, COLUMN_NAMES, WORKING_USERS
+from  exdef import TABLE_NAME, COLUMN_NAMES, WORKING_USERS,FAULT_USERS
 
 class TestFuncs(unittest.TestCase):
 
