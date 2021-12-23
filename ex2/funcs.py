@@ -26,6 +26,21 @@ def connect(tst=True) :
     except Exception as ex:
         return False
 
+def check_unique_username(table_name) :
+    # At least one row must be specified when creating a table
+    names = []
+    cur.execute("SELECT username FROM "+table_name)
+
+    usernames = cur.fetchall()
+    for username in usernames :
+        names.append(username[0])
+
+    if(len(set(names)) != len(names)):
+        return False
+    return True
+
+
+
 def create_table(table_name,tst=True) :
     # At least one row must be specified when creating a table
     cur.execute("create table "+table_name+"(s)")
