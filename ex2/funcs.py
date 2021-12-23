@@ -62,9 +62,23 @@ def check_length_username(table_name,usr_name="") :
     else :
         usernames = usr_name
         
-
     for username in usernames :
         if len(username[0]) <= MIN_USERNAME_LENGTH:
+            return False
+    return True
+
+
+def check_length_password(table_name,pwds="") :
+    if(not pwds):
+        names = []
+        cur.execute("SELECT password FROM "+table_name)
+        passwords = cur.fetchall()
+    else :
+        passwords = pwds
+
+    print(passwords)
+    for pwd in passwords :
+        if len(pwd[0]) < MIN_PASSWORD_LENGTH:
             return False
     return True
 
