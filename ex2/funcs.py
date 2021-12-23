@@ -37,4 +37,6 @@ def add_user(usr_name,password,tst=True) :
         query = "SELECT "+ COLUMN_NAMES[0] +", " +COLUMN_NAMES[1]+ "  FROM "+TABLE_NAME+" WHERE "+COLUMN_NAMES[0] + " = '" +usr_name +"'"
         fields = cur.execute(query).fetchall()
         return fields[0]
-    
+
+def login(usr_name,password,tst=True) :
+    return ""
