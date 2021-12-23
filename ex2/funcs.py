@@ -27,8 +27,8 @@ def connect(tst=True) :
         return False
 
 def check_unique_username(table_name,usr_name="") :
+    names = []
     if(not usr_name):
-        names = []
         cur.execute("SELECT username FROM "+table_name)
         usernames = cur.fetchall()
     else :
@@ -42,8 +42,8 @@ def check_unique_username(table_name,usr_name="") :
     return True
 
 def check_special_username(table_name,usr_name="") :
+    names = []
     if(not usr_name):
-        names = []
         cur.execute("SELECT username FROM "+table_name)
         usernames = cur.fetchall()
     else :
@@ -55,8 +55,8 @@ def check_special_username(table_name,usr_name="") :
     return True
 
 def check_length_username(table_name,usr_name="") :
+    names = []
     if(not usr_name):
-        names = []
         cur.execute("SELECT username FROM "+table_name)
         usernames = cur.fetchall()
     else :
@@ -69,8 +69,8 @@ def check_length_username(table_name,usr_name="") :
 
 
 def check_length_password(table_name,pwds="") :
+    names = []
     if(not pwds):
-        names = []
         cur.execute("SELECT password FROM "+table_name)
         passwords = cur.fetchall()
     else :
@@ -82,8 +82,8 @@ def check_length_password(table_name,pwds="") :
     return True
 
 def check_upper_password(table_name,pwds="") :
+    names = []
     if(not pwds):
-        names = []
         cur.execute("SELECT password FROM "+table_name)
         passwords = cur.fetchall()
     else :
@@ -97,8 +97,8 @@ def check_upper_password(table_name,pwds="") :
     return True
 
 def check_digit_password(table_name,pwds="") :
+    names = []
     if(not pwds):
-        names = []
         cur.execute("SELECT password FROM "+table_name)
         passwords = cur.fetchall()
     else :
@@ -112,8 +112,8 @@ def check_digit_password(table_name,pwds="") :
 
 
 def check_standard_password(table_name,pwds="") :
+    names = []
     if(not pwds):
-        names = []
         cur.execute("SELECT password FROM "+table_name)
         passwords = cur.fetchall()
     else :
@@ -126,16 +126,44 @@ def check_standard_password(table_name,pwds="") :
     return True
     
 def check_len_key(table_name,key_col_name,keys_str="") :
+    names = []
     if(not keys_str):
-        names = []
         cur.execute("SELECT "+key_col_name+" FROM "+table_name)
         passwords = cur.fetchall()
     else :
         passwords = keys_str
-        
+
     for key in passwords :
         if len(key[0]) < KEY_SIZE :
                 return False
+    return True
+
+def validate(table):
+    
+    res = []
+    cur.execute("SELECT username FROM "+table)
+    usrs = cur.fetchall()
+    
+    res.append(check_length_username(table,usrs))
+    res.append(check_unique_username(table,usrs))
+    res.append(check_special_username(table,usrs))
+  
+    cur.execute("SELECT password FROM "+table)
+    passwords = cur.fetchall()
+    res.append(check_length_password(table,passwords))
+    res.append(check_upper_password(table,passwords))
+    res.append(check_length_password(table,passwords))
+    res.append(check_digit_password(table,passwords))
+    res.append(check_standard_password(table,passwords))
+
+    res.append(check_len_key(table,S_PRI_KEY_COL_NAME))
+    res.append(check_len_key(table,S_PRI_KEY_COL_NAME))
+    res.append(check_len_key(table,E_PUB_KEY_COL_NAME))
+    res.append(check_len_key(table,E_PRI_KEY_COL_NAME))
+
+    if False in res :
+        return False
+    
     return True
 
 
