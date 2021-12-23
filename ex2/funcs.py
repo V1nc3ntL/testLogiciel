@@ -26,11 +26,14 @@ def connect(tst=True) :
     except Exception as ex:
         return False
 
-def check_unique_username(table_name) :
-    names = []
-    cur.execute("SELECT username FROM "+table_name)
+def check_unique_username(table_name,usr_name="") :
+    if(not usr_name):
+        names = []
+        cur.execute("SELECT username FROM "+table_name)
+        usernames = cur.fetchall()
+    else :
+        usernames = usr_name
 
-    usernames = cur.fetchall()
     for username in usernames :
         names.append(username[0])
 
@@ -38,18 +41,27 @@ def check_unique_username(table_name) :
         return False
     return True
 
-def check_special_username(table_name) :
-    cur.execute("SELECT username FROM "+table_name)
-    usernames = cur.fetchall()
-
+def check_special_username(table_name,usr_name="") :
+    if(not usr_name):
+        names = []
+        cur.execute("SELECT username FROM "+table_name)
+        usernames = cur.fetchall()
+    else :
+        usernames = usr_name
+        
     for username in usernames :
         if (any(not c.isalnum() for c in username)):
             return False
     return True
 
-def check_length_username(table_name) :
-    cur.execute("SELECT username FROM "+table_name)
-    usernames = cur.fetchall()
+def check_length_username(table_name,usr_name="") :
+    if(not usr_name):
+        names = []
+        cur.execute("SELECT username FROM "+table_name)
+        usernames = cur.fetchall()
+    else :
+        usernames = usr_name
+        
 
     for username in usernames :
         if len(username[0]) <= MIN_USERNAME_LENGTH:
