@@ -33,7 +33,7 @@ class TestFuncs(unittest.TestCase):
             self.assertEqual(funcs.add_user(usr[0],usr[1]),(usr[0],usr[1]))
 
      # Test for the user add function
-    def test_04_add_user(self):
+    def test_04_login(self):
         for usr in WORKING_USERS:
             self.assertTrue(funcs.login(usr[0],usr[1]))
         for usr_fault in FAULT_USERS:
