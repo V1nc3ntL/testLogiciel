@@ -96,6 +96,20 @@ def check_upper_password(table_name,pwds="") :
     
     return True
 
+def check_digit_password(table_name,pwds="") :
+    if(not pwds):
+        names = []
+        cur.execute("SELECT password FROM "+table_name)
+        passwords = cur.fetchall()
+    else :
+        passwords = pwds
+    
+    for pwd in passwords :
+       res = any(c.isdigit() for c in pwd[0])
+       if not res :
+           return False
+    
+    return True
 def create_table(table_name,tst=True) :
     # At least one row must be specified when creating a table
     cur.execute("create table "+table_name+"(s)")
