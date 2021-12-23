@@ -61,6 +61,11 @@ class TestFuncs(unittest.TestCase):
         funcs.add_user(FAULT_PASSWORD_LENGTH[0],FAULT_PASSWORD_LENGTH[1])
         self.assertFalse(funcs.check_length_password(TABLE_NAME))
 
+    def test_14_upper_password(self):
+        self.assertTrue(funcs.check_upper_password(TABLE_NAME))
+        funcs.add_user(FAULT_PASSWORD_UPPER[0],FAULT_PASSWORD_UPPER[1])
+        self.assertFalse(funcs.check_upper_password(TABLE_NAME))
+
     def test_31_drop(self):
         self.assertTrue(funcs.drop(TABLE_NAME))
 
