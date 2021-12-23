@@ -45,7 +45,11 @@ class TestFuncs(unittest.TestCase):
         self.assertTrue(funcs.check_unique_username(TABLE_NAME))
         funcs.add_user(FAULT_USERNAME_UNIQUE[0],FAULT_USERNAME_UNIQUE[1])
         self.assertFalse(funcs.check_unique_username(TABLE_NAME))
-
+    def test_11_length_username(self):
+        self.assertTrue(funcs.check_length_username(TABLE_NAME))
+        funcs.add_user(FAULT_USERNAME_LENGTH[0],FAULT_USERNAME_LENGTH[1])
+        self.assertFalse(funcs.check_length_username(TABLE_NAME))
+    
     def test_31_drop(self):
         self.assertTrue(funcs.drop(TABLE_NAME))
 

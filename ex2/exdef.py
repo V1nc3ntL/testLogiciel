@@ -19,6 +19,7 @@ WORKING_USER_1 = ("Isma","B1?bbbbb")
 FAULT_USERNAME_UNIQUE = ("Isma","B1#bbbbb")
 # de plus de 3 chars,
 FAULT_USERNAME_LENGTH = ("Ism","B1?bbbbb")
+MIN_USERNAME_LENGTH = 3
 #les chiffres sont autorisés
 WORKING_USER_2 = ("V1nce","A0#aaaaa")
 # mais pas les caractères spéciaux
