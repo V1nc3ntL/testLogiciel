@@ -26,6 +26,7 @@ WORKING_USER_2 = ("V1nce","A0#aaaaa")
 FAULT_USERNAME_SPECIALCHAR = ("user?","B1?bbbbb")
 # Le password devra être composé de 8 chars minimum
 FAULT_PASSWORD_LENGTH = ("Vinsma","B1?bbbb")
+MIN_PASSWORD_LENGTH = 8
 # contenant au moins une majuscule, 
 FAULT_PASSWORD_UPPER = ("passwordupper","b1?bbbbb")
 # au moins un caractère spécial, 
