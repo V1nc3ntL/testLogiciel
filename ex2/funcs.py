@@ -31,4 +31,10 @@ def add_column(column_name,type_str="STRING",tst=True) :
             return "" 
 
 def add_user(usr_name,password,tst=True) :
-    return ""
+    query = "INSERT INTO "+exdef.TABLE_NAME + "("+exdef.COLUMN_NAMES[0] + "," + exdef.COLUMN_NAMES[1] + ") values (?,?)" 
+    cur.execute(query,(usr_name,password))
+    if(tst):
+        query = "SELECT "+ exdef.COLUMN_NAMES[0] +", " +exdef.COLUMN_NAMES[1]+ "  FROM "+exdef.TABLE_NAME+" WHERE "+exdef.COLUMN_NAMES[0] + " = '" +usr_name +"'"
+        fields = cur.execute(query).fetchall()
+        return fields[0]
+    
