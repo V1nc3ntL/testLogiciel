@@ -125,13 +125,14 @@ def check_standard_password(table_name,pwds="") :
            return False
     return True
     
-def check_len_spubkey(table_name,keys_str="") :
+def check_len_key(table_name,key_col_name,keys_str="") :
     if(not keys_str):
         names = []
-        cur.execute("SELECT spublickey FROM "+table_name)
+        cur.execute("SELECT "+key_col_name+" FROM "+table_name)
         passwords = cur.fetchall()
     else :
         passwords = keys_str
+        
     for key in passwords :
         if len(key[0]) < KEY_SIZE :
                 return False

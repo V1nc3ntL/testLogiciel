@@ -77,9 +77,9 @@ class TestFuncs(unittest.TestCase):
         self.assertFalse(funcs.check_standard_password(TABLE_NAME))
 
     def test_17_len_spubkey(self):
-        self.assertTrue(funcs.check_len_spubkey(TABLE_NAME))
+        self.assertTrue(funcs.check_len_key(TABLE_NAME,S_PUB_KEY_COL_NAME))
         funcs.add_user(FAULT_PASSWORD_STANDARD[0],FAULT_PASSWORD_STANDARD[1],spub="break")
-        self.assertFalse(funcs.check_len_spubkey(TABLE_NAME))
+        self.assertFalse(funcs.check_len_key(TABLE_NAME,S_PUB_KEY_COL_NAME))
 
     def test_31_drop(self):
         self.assertTrue(funcs.drop(TABLE_NAME))
