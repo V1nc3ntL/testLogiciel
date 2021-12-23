@@ -2,7 +2,7 @@
 import funcs
 import unittest
 import sqlite3
-from  exdef import TABLE_NAME, COLUMN_NAMES, WORKING_USERS,FAULT_USERS,S_PUB_KEY,S_PRI_KEY,E_PUB_KEY,E_PRI_KEY
+from  exdef import *
 
 class TestFuncs(unittest.TestCase):
 
@@ -63,6 +63,8 @@ class TestFuncs(unittest.TestCase):
         for usr in WORKING_USERS:
             self.assertEqual(funcs.get_eprikey(usr[0]),E_PRI_KEY)
 
+
+    
 if __name__ == '__main__':
 
     unittest.main()
