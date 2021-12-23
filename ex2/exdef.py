@@ -3,7 +3,7 @@ TABLE_NAME = "users"
 COLUMN_NAMES = ("username","password","spublickey","sprivatekey","epublickey","eprivatekey")
 #le username devra être un nom unique 
 WORKING_USER_1 = ("Isma","B1?bbbbb")
-FAULT_USERNAME_UNIQUE = ("Isma","B1?bbbbb")
+FAULT_USERNAME_UNIQUE = ("Isma","B1#bbbbb")
 # de plus de 3 chars,
 FAULT_USERNAME_LENGTH = ("Ism","B1?bbbbb")
 #les chiffres sont autorisés
