@@ -41,7 +41,10 @@ class TestFuncs(unittest.TestCase):
         for usr in WORKING_USERS:
             self.assertEqual(funcs.get_eprikey(usr[0]),E_PRI_KEY)
     # 04
-
+    def test_10_unique_username(self):
+        self.assertTrue(funcs.check_unique_username(TABLE_NAME))
+        funcs.add_user(FAULT_USERNAME_UNIQUE[0],FAULT_USERNAME_UNIQUE[1])
+        self.assertFalse(funcs.check_unique_username(TABLE_NAME))
 
     def test_31_drop(self):
         self.assertTrue(funcs.drop(TABLE_NAME))
