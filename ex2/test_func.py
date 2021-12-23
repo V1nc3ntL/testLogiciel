@@ -78,8 +78,23 @@ class TestFuncs(unittest.TestCase):
 
     def test_17_len_spubkey(self):
         self.assertTrue(funcs.check_len_key(TABLE_NAME,S_PUB_KEY_COL_NAME))
-        funcs.add_user(FAULT_PASSWORD_STANDARD[0],FAULT_PASSWORD_STANDARD[1],spub="break")
+        funcs.add_user(WORKING_USER_1[0],WORKING_USER_1[1],spub="break")
         self.assertFalse(funcs.check_len_key(TABLE_NAME,S_PUB_KEY_COL_NAME))
+    
+    def test_18_len_sprikey(self):
+        self.assertTrue(funcs.check_len_key(TABLE_NAME,S_PRI_KEY_COL_NAME))
+        funcs.add_user(WORKING_USER_1[0],WORKING_USER_1[1],spri="break")
+        self.assertFalse(funcs.check_len_key(TABLE_NAME,S_PRI_KEY_COL_NAME))
+
+    def test_19_len_epubkey(self):
+        self.assertTrue(funcs.check_len_key(TABLE_NAME,E_PUB_KEY_COL_NAME))
+        funcs.add_user(WORKING_USER_1[0],WORKING_USER_1[1],epub="break")
+        self.assertFalse(funcs.check_len_key(TABLE_NAME,E_PUB_KEY_COL_NAME))
+
+    def test_20_len_eprikey(self):
+        self.assertTrue(funcs.check_len_key(TABLE_NAME,E_PRI_KEY_COL_NAME))
+        funcs.add_user(WORKING_USER_1[0],WORKING_USER_1[1],epri="break")
+        self.assertFalse(funcs.check_len_key(TABLE_NAME,E_PRI_KEY_COL_NAME))
 
     def test_31_drop(self):
         self.assertTrue(funcs.drop(TABLE_NAME))
