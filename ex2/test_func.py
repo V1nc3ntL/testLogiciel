@@ -57,11 +57,11 @@ class TestFuncs(unittest.TestCase):
 
     def test_07_epubkeys(self):
         for usr in WORKING_USERS:
-            self.assertEqual(funcs.get_epubkey(usr[0]),E_PRI_KEY)
+            self.assertEqual(funcs.get_epubkey(usr[0]),E_PUB_KEY)
 
     def test_08_epubkeys(self):
         for usr in WORKING_USERS:
-            self.assertEqual(funcs.get_epubkey(usr[0]),E_PUB_KEY)
+            self.assertEqual(funcs.get_eprikey(usr[0]),E_PRI_KEY)
 
 if __name__ == '__main__':
 

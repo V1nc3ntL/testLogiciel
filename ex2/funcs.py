@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import sqlite3
-from exdef import  DB_NAME, TABLE_NAME, COLUMN_NAMES,S_PUB_KEY,S_PRI_KEY,E_PUB_KEY,E_PRI_KEY
+from exdef import  DB_NAME, TABLE_NAME, COLUMN_NAMES,S_PUB_KEY,S_PRI_KEY,E_PUB_KEY,E_PRI_KEY,KEY_NAMES
 
 cur = None
 
@@ -20,8 +20,12 @@ def create_table(table_name,tst=True) :
         cur.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='"+table_name+"'") 
         return cur.fetchall()[0][0]
 
-def add_column(column_name,type_str="STRING",tst=True) :
-    query = "ALTER TABLE "+TABLE_NAME + " ADD COLUMN " + column_name + " " + type_str
+def add_column(column_name,fixed_len=128,tst=True) :
+    query = "ALTER TABLE "+TABLE_NAME + " ADD COLUMN " + column_name + " " 
+    if(column_name in KEY_NAMES):
+        query+=" CHAR("+ str(fixed_len)+")"
+    else:
+        query+=" VARCHAR("+ str(fixed_len)+")"
     cur.execute(query)
     if(tst):
         cols = cur.execute("SELECT name FROM PRAGMA_TABLE_INFO('"+TABLE_NAME+"')" ).fetchall()
@@ -54,15 +58,31 @@ def login(usr_name,password) :
 
 
 def get_spubkey(usr_name,tst=True) :
+    query = "SELECT "+ COLUMN_NAMES[2] +"  FROM "+TABLE_NAME+" WHERE "+COLUMN_NAMES[0] + " = '" +usr_name +"'"
+    fields = cur.execute(query).fetchall()
+    if fields :
+        return fields[0][0]
     return ""
     
-def get_sprikey(key,tst=True) :
+def get_sprikey(usr_name,tst=True) :
+    query = "SELECT "+ COLUMN_NAMES[3] +"  FROM "+TABLE_NAME+" WHERE "+COLUMN_NAMES[0] + " = '" +usr_name +"'"
+    fields = cur.execute(query).fetchall()
+    if fields :
+        return fields[0][0]
     return ""
     
 def get_epubkey(usr_name,tst=True) :
+    query = "SELECT "+ COLUMN_NAMES[4] +"  FROM "+TABLE_NAME+" WHERE "+COLUMN_NAMES[0] + " = '" +usr_name +"'"
+    fields = cur.execute(query).fetchall()
+    if fields :
+        return fields[0][0]
     return ""
     
-def get_eprikey(key,tst=True) :
+def get_eprikey(usr_name,tst=True) :
+    query = "SELECT "+ COLUMN_NAMES[5] +"  FROM "+TABLE_NAME+" WHERE "+COLUMN_NAMES[0] + " = '" +usr_name +"'"
+    fields = cur.execute(query).fetchall()
+    if fields :
+        return fields[0][0]
     return ""
     
     
