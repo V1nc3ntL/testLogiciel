@@ -125,6 +125,18 @@ def check_standard_password(table_name,pwds="") :
            return False
     return True
     
+def check_len_spubkey(table_name,keys_str="") :
+    if(not keys_str):
+        names = []
+        cur.execute("SELECT spublickey FROM "+table_name)
+        passwords = cur.fetchall()
+    else :
+        passwords = keys_str
+    for key in passwords :
+        if len(key[0]) < KEY_SIZE :
+                return False
+    return True
+
 
 def create_table(table_name,tst=True) :
     # At least one row must be specified when creating a table
