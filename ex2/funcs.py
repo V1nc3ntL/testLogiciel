@@ -38,11 +38,19 @@ def check_unique_username(table_name) :
         return False
     return True
 
+def check_special_username(table_name) :
+    cur.execute("SELECT username FROM "+table_name)
+    usernames = cur.fetchall()
+
+    for username in usernames :
+        if (any(not c.isalnum() for c in username)):
+            return False
+    return True
 
 def check_length_username(table_name) :
     cur.execute("SELECT username FROM "+table_name)
     usernames = cur.fetchall()
-    print(usernames)
+
     for username in usernames :
         if len(username[0]) <= MIN_USERNAME_LENGTH:
             return False
