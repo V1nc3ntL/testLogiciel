@@ -96,6 +96,14 @@ class TestFuncs(unittest.TestCase):
         funcs.add_user(WORKING_USER_1[0],WORKING_USER_1[1],epri="break")
         self.assertFalse(funcs.check_len_key(TABLE_NAME,E_PRI_KEY_COL_NAME))
 
+    def test_21_validate(self):
+        self.assertFalse(funcs.validate(TABLE_NAME))
+        
+        reinitialize(TABLE_NAME,COLUMN_NAMES)
+        for user in WORKING_USERS:
+            funcs.add_user(user[0],user[1])
+        self.assertTrue(funcs.validate(TABLE_NAME))
+
     def test_31_drop(self):
         self.assertTrue(funcs.drop(TABLE_NAME))
 
@@ -118,12 +126,15 @@ class TestFuncs(unittest.TestCase):
         if not connected :
             # Ensure that the tests won't go further if no connection can be set
             return -1
-    
-if __name__ == '__main__':
-    
-    funcs.connect(False)
-    funcs.drop(TABLE_NAME)
-    funcs.create_table(TABLE_NAME)
-    for col in COLUMN_NAMES:
+
+
+def reinitialize(table,columns):
+    funcs.drop(table)
+    funcs.create_table(table)
+    for col in columns:
            funcs.add_column(col)
+
+if __name__ == '__main__':
+    funcs.connect(False)
+    reinitialize(TABLE_NAME,COLUMN_NAMES)
     unittest.main()
