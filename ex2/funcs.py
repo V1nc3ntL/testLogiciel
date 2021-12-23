@@ -41,8 +41,14 @@ def add_user(usr_name,password,tst=True) :
 def login(usr_name,password,tst=True) :
     query = "SELECT "+ COLUMN_NAMES[0] +", " +COLUMN_NAMES[1]+ "  FROM "+TABLE_NAME+" WHERE "+COLUMN_NAMES[0] + " = '" +usr_name +"'AND "+COLUMN_NAMES[1] + " = '" +password+"'" 
     fields = cur.execute(query).fetchall()
-    print(fields)
     if fields :
         if(fields[0][0]==usr_name and fields[0][1]==password):
             return True
     return False
+
+    
+    
+    
+    
+    
+    
