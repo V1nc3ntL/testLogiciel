@@ -27,7 +27,6 @@ def connect(tst=True) :
         return False
 
 def check_unique_username(table_name) :
-    # At least one row must be specified when creating a table
     names = []
     cur.execute("SELECT username FROM "+table_name)
 
@@ -40,6 +39,14 @@ def check_unique_username(table_name) :
     return True
 
 
+def check_length_username(table_name) :
+    cur.execute("SELECT username FROM "+table_name)
+    usernames = cur.fetchall()
+    print(usernames)
+    for username in usernames :
+        if len(username[0]) <= MIN_USERNAME_LENGTH:
+            return False
+    return True
 
 def create_table(table_name,tst=True) :
     # At least one row must be specified when creating a table
